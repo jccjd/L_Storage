@@ -33,8 +33,8 @@ public class ExternalActivity extends AppCompatActivity implements View.OnClickL
         btnSaveData = (Button) findViewById(R.id.btn_save_data);
         tvShowData = (TextView) findViewById(R.id.tv_show_data);
 
-
-
+        btnSaveData.setOnClickListener(this);
+        btnGetData.setOnClickListener(this);
 
 
     }
