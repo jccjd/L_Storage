@@ -52,15 +52,19 @@ public class InternalActivity extends AppCompatActivity  implements View.OnClick
 
     private void saveData() {
         String strInputData = etInputData.getText().toString();
+
+        FileOutputStream fos = null;
         try {
-            FileOutputStream fos = openFileOutput("data.txt",MODE_PRIVATE);
+            fos = openFileOutput("data.txt",MODE_PRIVATE);
             fos.write(strInputData.getBytes());
             fos.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
 
 
@@ -72,7 +76,6 @@ public class InternalActivity extends AppCompatActivity  implements View.OnClick
             int hasRead = -1;
             while ((hasRead = fis.read(buffer))!= -1) {
                 sb.append(new String (buffer,0,hasRead));
-
             }
             tvShowData.setText(sb.toString());
             fis.close();
